@@ -2,15 +2,6 @@
 
 #include <iostream>
 #include <string>
-
-class Rating
-{
-	static std::string Rating_G;
-	static std::string Rating_PG;
-	static std::string Rating_PG13; 
-	static std::string Rating_R;
-};
-
 #include <vector>
 
 class Movie
@@ -26,10 +17,10 @@ class Movie
 
 class Movies
 {
-	std::vector<Movie*> movies;
+	std::vector<Movie*> moviesList;
 
 public:
 	void addMovie(std::string name, std::string rating, int watched);
-	//Movie incrementWatched(std::string name);
+	void incrementWatched(std::string name);
 	void displayAll();
 };

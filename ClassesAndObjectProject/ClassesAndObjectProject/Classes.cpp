@@ -1,27 +1,28 @@
 #include "Classes.h"
 
-std::string Rating_G = "G";
-std::string Rating_PG = "PG";
-std::string Rating_PG13 = "PG13";
-std::string Rating_R = "R";
-
 void Movies::addMovie(std::string name, std::string rating, int watched)
 {
 	Movie* movie = new Movie(name, rating, watched);
 
-	movies.push_back(movie);	
+	moviesList.push_back(movie);	
 }
 
-//Movie Movies::incrementWatched(std::string name)
-//{
-//	return Movie();
-//}
+void Movies::incrementWatched(std::string name)
+{
+	for (int i = 0; i <= moviesList.size() - 1; i++)
+	{
+		if (moviesList.at(i)->name == name)
+		{
+			moviesList.at(i)->watched += 1;
+			return;
+		}
+	}
+}
 
 void Movies::displayAll()
 {
-	for (int i = 0; i <= movies.size(); i++)
+	for (int i = 0; i <= (moviesList.size()-1); i++)
 	{
-		std::cout << "Movie " << i << ":\n";
-		std::cout << "name: " << movies.at(i)->name << "rating: " << movies.at(i)->rating << "watched: " << movies.at(i)->watched << "\n";
+		std::cout << i <<": " << "name: " << moviesList.at(i)->name << ", rating: " << moviesList.at(i)->rating << ", watched: " << moviesList.at(i)->watched << "\n";
 	}
 }
