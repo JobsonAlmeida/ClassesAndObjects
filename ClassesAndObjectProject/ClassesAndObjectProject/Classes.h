@@ -1,32 +1,35 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
-enum class Rating
+class Rating
 {
-	Rating_G,
-	Rating_PG,
-	Rating_PG13,
-	Rating_R
+	static std::string Rating_G;
+	static std::string Rating_PG;
+	static std::string Rating_PG13; 
+	static std::string Rating_R;
 };
 
 #include <vector>
 
 class Movie
 {
+	friend class Movies;
+
 	std::string name;
-	Rating rating;
+	std::string rating;
 	int watched;
+
+	Movie(std::string name, std::string rating, int watched) : name{ name }, rating{ rating }, watched{ watched } {}
 };
 
 class Movies
 {
-	friend class Movie;
-
-	std::vector<Movie> movies;
+	std::vector<Movie*> movies;
 
 public:
-	Movie addMovie(std::string name, Rating rating, int watched);
-	Movie incrementWatched(std::string name);
+	void addMovie(std::string name, std::string rating, int watched);
+	//Movie incrementWatched(std::string name);
 	void displayAll();
 };
