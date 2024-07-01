@@ -37,8 +37,17 @@ void Movies::incrementWatched(std::string name)
 
 void Movies::displayAll()
 {
-	for (int i = 0; i <= (moviesList.size() - 1); i++)
+	if (moviesList.size() > 0)
 	{
-		std::cout << i << ": " << "name: " << moviesList.at(i)->name << ", rating: " << moviesList.at(i)->rating << ", watched: " << moviesList.at(i)->watched << "\n";
+		for (int i = 0; i <= (moviesList.size() - 1); i++)
+		{
+			std::cout << i << ": " << "name: " << moviesList.at(i)->name << ", rating: " << moviesList.at(i)->rating << ", watched: " << moviesList.at(i)->watched << "\n";
+		}
 	}
+	else
+	{
+		std::cout << "There are no movies to be shown! \n";
+	}
+	
 }
+
